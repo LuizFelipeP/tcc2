@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Gastos</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>Adicionar Gasto</h1>
+  <form id="expense-form">
+    <div class="form-group">
+      <label for="expense">Descrição do Gasto:</label>
+      <input type="text" id="expense" name="expense" required>
+    </div>
+    <div class="form-group">
+      <label for="amount">Valor:</label>
+      <input type="number" id="amount" name="amount" required>
+    </div>
+    <button type="submit">Salvar Gasto</button>
+  </form>
+  <button id="back-to-dashboard">Voltar para o Dashboard</button>
+</div>
+
+<script src="/add-expense.js"></script>
+</body>
+</html>
