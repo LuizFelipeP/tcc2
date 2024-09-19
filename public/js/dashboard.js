@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const userName = localStorage.getItem('user');
     const welcomeMessage = document.getElementById('welcome-message');
-    const expenseList = document.getElementById('expense-list'); // Certifique-se de que este elemento exista no HTML
+    const expenseList = document.getElementById('expense-list');
 
     if (userName) {
         welcomeMessage.textContent = `Bem-vindo, ${userName}!`;
@@ -33,16 +33,71 @@ function carregarGastos() {
 
     ydb.on('synced', () => {
         const expenseList = document.getElementById('expense-list');
-        expenseList.innerHTML = ''; // Limpa a lista antes de preencher
+        expenseList.innerHTML = ''; // Limpa a tabela antes de preencher
 
-        // Itera sobre os gastos e adiciona cada um à lista
         expenseMap.forEach((value, key) => {
-            const li = document.createElement('li');
-            li.textContent = `${key}: R$ ${value.amount} - ${value.date} (Registrado por ${value.user})`;
-            expenseList.appendChild(li);
+            // Cria uma nova linha na tabela
+            const tr = document.createElement('tr');
+
+            // Status (sincronizado ou não)
+            const statusTd = document.createElement('td');
+            const statusCircle = document.createElement('span');
+            statusCircle.classList.add('status-circle');
+            statusCircle.classList.add(value.synced ? 'status-synced' : 'status-not-synced');
+            statusTd.appendChild(statusCircle);
+
+            // Usuário que fez o gasto
+            const userTd = document.createElement('td');
+            userTd.textContent = value.user;
+
+            // Descrição do gasto
+            const descriptionTd = document.createElement('td');
+            descriptionTd.textContent = key;
+
+            // Valor do gasto
+            const amountTd = document.createElement('td');
+            amountTd.textContent = `R$ ${value.amount}`;
+
+            // Data do gasto
+            const dateTd = document.createElement('td');
+            dateTd.textContent = value.date;
+
+            // Botão de remover
+            const actionTd = document.createElement('td');
+            const removeBtn = document.createElement('button');
+            removeBtn.classList.add('remove-expense-btn');
+            removeBtn.innerHTML = 'X';
+            removeBtn.addEventListener('click', () => {
+                expenseMap.delete(key); // Remover o item do Yjs
+            });
+            actionTd.appendChild(removeBtn);
+
+            // Adiciona os elementos à linha (tr) na ordem correta
+            tr.appendChild(statusTd);
+            tr.appendChild(userTd);
+            tr.appendChild(descriptionTd);
+            tr.appendChild(amountTd);
+            tr.appendChild(dateTd);
+            tr.appendChild(actionTd);
+
+            // Adiciona a linha ao corpo da tabela
+            expenseList.appendChild(tr);
         });
 
         console.log('Gastos carregados com sucesso');
+    });
+
+}
+
+// Função para remover gasto
+function removerGasto(key) {
+    const doc = new Y.Doc();
+    const ydb = new IndexeddbPersistence('expenseDB', doc);
+    const expenseMap = doc.getMap('expenses');
+
+    ydb.on('synced', () => {
+        expenseMap.delete(key);  // Remove o gasto do Yjs map
+        console.log(`Gasto "${key}" removido`);
     });
 }
 
