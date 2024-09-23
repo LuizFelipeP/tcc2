@@ -35,9 +35,11 @@ function carregarGastos() {
         const expenseList = document.getElementById('expense-list');
         expenseList.innerHTML = ''; // Limpa a tabela antes de preencher
 
+
         expenseMap.forEach((value, key) => {
             // Cria uma nova linha na tabela
             const tr = document.createElement('tr');
+
 
             // Status (sincronizado ou não)
             const statusTd = document.createElement('td');
@@ -69,6 +71,7 @@ function carregarGastos() {
             removeBtn.innerHTML = 'X';
             removeBtn.addEventListener('click', () => {
                 expenseMap.delete(key); // Remover o item do Yjs
+                tr.remove(); // Remove o item da lista na interface imediatamente
             });
             actionTd.appendChild(removeBtn);
 
