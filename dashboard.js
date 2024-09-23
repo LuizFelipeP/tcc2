@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             carregarGastos();
         }
     } else {
-        window.location.href = '/index.html';
+        window.location.href = 'index.html';
     }
 });
 
@@ -107,12 +107,12 @@ function removerGasto(key) {
 // Redirecionar para a página de adição de gastos
 const addExpenseBtn = document.getElementById('add-expense-btn');
 addExpenseBtn.addEventListener('click', () => {
-    window.location.href = '../pages/add-expense.html';
+    window.location.href = 'add-expense.html';
 });
 
 // Logout
 const logoutBtn = document.getElementById('logout-btn');
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('user');
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
 });
