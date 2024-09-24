@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const expenseList = document.getElementById('expense-list');
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('service-worker.js')
           .then((registration) => {
               console.log('Service Worker registrado com sucesso:', registration.scope);
           })
