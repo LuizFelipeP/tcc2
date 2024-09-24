@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.getElementById('welcome-message');
     const expenseList = document.getElementById('expense-list');
 
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+              console.log('Service Worker registrado com sucesso:', registration.scope);
+          })
+          .catch((error) => {
+              console.error('Falha ao registrar o Service Worker:', error);
+          });
+    }
+
+
     if (userName) {
         welcomeMessage.textContent = `Bem-vindo, ${userName}!`;
 
@@ -17,23 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }).catch((error) => {
                 console.error("Erro ao carregar os módulos Yjs:", error);
             });
-        } else {
+        }
+
+        else {
             carregarGastos();
         }
-    } else {
-        window.location.href = '/index.html';
-
-
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-              .then((registration) => {
-                  console.log('Service Worker registrado com sucesso:', registration.scope);
-              })
-              .catch((error) => {
-                  console.error('Falha ao registrar o Service Worker:', error);
-              });
-        }
-
+             } else { window.location.href = '/index.html';
     }
 });
 
