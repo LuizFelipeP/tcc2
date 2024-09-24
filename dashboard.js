@@ -21,7 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
             carregarGastos();
         }
     } else {
-        window.location.href = 'index.html';
+        window.location.href = '/index.html';
+
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+              .then((registration) => {
+                  console.log('Service Worker registrado com sucesso:', registration.scope);
+              })
+              .catch((error) => {
+                  console.error('Falha ao registrar o Service Worker:', error);
+              });
+        }
+
     }
 });
 
@@ -107,12 +119,12 @@ function removerGasto(key) {
 // Redirecionar para a página de adição de gastos
 const addExpenseBtn = document.getElementById('add-expense-btn');
 addExpenseBtn.addEventListener('click', () => {
-    window.location.href = 'add-expense.html';
+    window.location.href = '../pages/add-expense.html';
 });
 
 // Logout
 const logoutBtn = document.getElementById('logout-btn');
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('user');
-    window.location.href = 'index.html';
+    window.location.href = '/index.html';
 });
