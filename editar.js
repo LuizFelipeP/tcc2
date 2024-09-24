@@ -76,12 +76,12 @@ function carregarGasto() {
     });
 
     // Redirecionar de volta para a página de gastos
-    window.location.href = '../pages/dashboard.html'; // Atualize para a URL correta
+    window.location.href = 'dashboard.html'; // Atualize para a URL correta
   });
 
   // Cancelar edição
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
   cancelEditBtn.addEventListener('click', () => {
-    window.location.href = '../pages/dashboard.html'; // Atualize para a URL correta
+    window.location.href = 'dashboard.html'; // Atualize para a URL correta
   });
 }
