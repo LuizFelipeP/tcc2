@@ -20,14 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
       carregarGasto();
     }
   } else {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
   }
 
   // Logout
   const logoutBtn = document.getElementById('logout-btn');
   logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('user');
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
   });
 });
 
