@@ -20,8 +20,8 @@ body {
     padding: 1.5em;
 }
 
-
-.login-container:hover, .register-container:hover, .add-expense-container:hover {
+/* Efeitos de hover */
+.login-container:hover, .register-container:hover, .add-expense-container:hover{
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
@@ -84,8 +84,12 @@ h1 {
         font-size: 0.9em;
     }
 
-    #add-expense-btn, #logout-btn {
+    #add-expense-btn  {
         width: 100%;
+    }
+    #logout-btn {
+
+        width: 25%;
     }
 }
 
@@ -114,7 +118,7 @@ td {
 }
 
 /* Estilo dos botões */
-.form-group button, #back-to-dashboard, #show-register, #show-login {
+.form-group button, #back-to-dashboard, #show-register, #show-login, #save-edit-btn, #cancel-edit-btn  {
     width: calc(100% - 1.5em);
     margin-left: 0.75em;
     padding: 0.75em;
@@ -127,7 +131,7 @@ td {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.form-group button:hover, #back-to-dashboard:hover, #show-register:hover, #show-login:hover {
+.form-group button:hover, #back-to-dashboard:hover, #show-register:hover, #show-login:hover, #logout-btn:hover {
     background-color: #3700b3;
     transform: translateY(-2px);
 }
@@ -274,10 +278,24 @@ th, td {
     padding: 0.75em;
     border-radius: 8px;
     cursor: pointer;
+    margin-top: 1em; /* Adiciona espaço acima do botão */
     transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 #logout-btn:hover {
     border-color: #3700b3;
     color: #bdbdbd;
+}
+
+/* Estilo de botões de ação */
+.form-actions {
+    display: flex;
+    justify-content: space-between; /* Distribui os botões ao longo da linha */
+    width: 100%; /* Garante que os botões ocupem a largura total */
+}
+
+/* Estilo dos grupos de botão */
+.form-actions button {
+    flex: 1; /* Faz com que os botões ocupem o mesmo espaço */
+    margin: 0 0.5em; /* Adiciona margem entre os botões */
 }

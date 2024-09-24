@@ -87,6 +87,15 @@ function carregarGastos() {
             });
             actionTd.appendChild(removeBtn);
 
+            const editBtn = document.createElement('button');
+            editBtn.classList.add('edit-expense-btn');
+            editBtn.innerHTML = '✏️'; // Ícone de lápis
+            editBtn.addEventListener('click', () => {
+                window.location.href = `../pages/editar.html?key=${encodeURIComponent(key)}`;
+            });
+            actionTd.appendChild(editBtn);
+
+
             // Adiciona os elementos à linha (tr) na ordem correta
             tr.appendChild(statusTd);
             tr.appendChild(userTd);
@@ -102,7 +111,10 @@ function carregarGastos() {
         console.log('Gastos carregados com sucesso');
     });
 
+
 }
+
+
 
 // Função para remover gasto
 function removerGasto(key) {
@@ -119,7 +131,7 @@ function removerGasto(key) {
 // Redirecionar para a página de adição de gastos
 const addExpenseBtn = document.getElementById('add-expense-btn');
 addExpenseBtn.addEventListener('click', () => {
-    window.location.href = 'add-expense.html';
+    window.location.href = '../pages/add-expense.html';
 });
 
 // Logout
@@ -127,4 +139,9 @@ const logoutBtn = document.getElementById('logout-btn');
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('user');
     window.location.href = '/index.html';
+
+
+
+
 });
+

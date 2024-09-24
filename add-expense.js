@@ -31,21 +31,27 @@ function inicializarYjsEIndexedDB() {
     const userName = localStorage.getItem('user'); // Obtém o nome do usuário logado
 
     if (expense && amount && userName) {
-      const now = new Date();
-      const date = `${now.toLocaleDateString()} ${now.getHours()}:${now.getMinutes()}`; // Formata sem os segundos
-      // Adiciona o gasto à lista de exibição
-      const li = document.createElement('li');
-      li.textContent = `${expense}: R$ ${amount} - ${date} (Registrado por ${userName})`;
-      expenseList?.appendChild(li);
+      // Verifica se o gasto já existe no Yjs (IndexedDB)
+      if (expenseMap.has(expense)) {
+        alert('Este gasto já foi registrado anteriormente!');
+      } else {
+        const now = new Date();
+        const date = `${now.toLocaleDateString()} ${now.getHours()}:${now.getMinutes()}`; // Formata sem os segundos
 
-      // Salvar o gasto no Yjs (IndexedDB)
-      expenseMap.set(expense, {
-        amount: amount,
-        user: userName,
-        date: date
-      });
+        // Adiciona o gasto à lista de exibição
+        const li = document.createElement('li');
+        li.textContent = `${expense}: R$ ${amount} - ${date} (Registrado por ${userName})`;
+        expenseList?.appendChild(li);
 
-      console.log(`Gasto salvo: ${expense} - R$ ${amount}, ${date} por ${userName}`);
+        // Salvar o gasto no Yjs (IndexedDB)
+        expenseMap.set(expense, {
+          amount: amount,
+          user: userName,
+          date: date
+        });
+
+        console.log(`Gasto salvo: ${expense} - R$ ${amount}, ${date} por ${userName}`);
+      }
     } else {
       alert('Por favor, preencha todos os campos e verifique se o usuário está logado!');
     }
@@ -54,6 +60,7 @@ function inicializarYjsEIndexedDB() {
   const backToDashboardBtn = document.getElementById('back-to-dashboard');
   backToDashboardBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.href = 'dashboard.html';
+    window.location.href = '/pages/dashboard.html';
   });
 }
+
