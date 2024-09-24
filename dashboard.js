@@ -119,7 +119,7 @@ function removerGasto(key) {
 // Redirecionar para a página de adição de gastos
 const addExpenseBtn = document.getElementById('add-expense-btn');
 addExpenseBtn.addEventListener('click', () => {
-    window.location.href = '../pages/add-expense.html';
+    window.location.href = 'add-expense.html';
 });
 
 // Logout
