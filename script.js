@@ -84,7 +84,7 @@ function inicializarYjsEIndexedDB() {
             if (validateUser(email, password)) {
                 alert(`Usuário ${email} logado com sucesso!`);
                 // Redirecionar para o dashboard
-                window.location.href = '../pages/dashboard.html';
+                window.location.href = 'dashboard.html';
             } else {
                 alert('Usuário ou senha inválidos!');
             }
