@@ -2,12 +2,12 @@ const cacheName = 'pwa-cache-v1';
 const assetsToCache = [
   '/',
   '/index.html',
-  '/public/pages/add-expense.html',
-  '/public/pages/dashboard.html',
-  '/public/js/add-expense.js',
-  '/public/js/script.js',
-  '/public/js/dashboard.js',
-  '/public/css/style.css',
+  'add-expense.html',
+  'dashboard.html',
+  'add-expense.js',
+  'script.js',
+  'dashboard.js',
+  'style.css',
 
 
   // Adicione aqui todos os arquivos que deseja manter em cache
