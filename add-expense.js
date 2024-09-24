@@ -60,7 +60,7 @@ function inicializarYjsEIndexedDB() {
   const backToDashboardBtn = document.getElementById('back-to-dashboard');
   backToDashboardBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.href = '/pages/dashboard.html';
+    window.location.href = 'dashboard.html';
   });
 }
 
