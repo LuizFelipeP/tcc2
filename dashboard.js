@@ -91,7 +91,7 @@ function carregarGastos() {
             editBtn.classList.add('edit-expense-btn');
             editBtn.innerHTML = '✏️'; // Ícone de lápis
             editBtn.addEventListener('click', () => {
-                window.location.href = `../pages/editar.html?key=${encodeURIComponent(key)}`;
+                window.location.href = `editar.html?key=${encodeURIComponent(key)}`;
             });
             actionTd.appendChild(editBtn);
 
@@ -131,7 +131,7 @@ function removerGasto(key) {
 // Redirecionar para a página de adição de gastos
 const addExpenseBtn = document.getElementById('add-expense-btn');
 addExpenseBtn.addEventListener('click', () => {
-    window.location.href = '../pages/add-expense.html';
+    window.location.href = 'add-expense.html';
 });
 
 // Logout
